@@ -1,0 +1,239 @@
+:root{
+  --sky-top:#bfe3ff;
+  --sky-bottom:#eafcd8;
+  --stem:#4a8f3c;
+  --stem-dark:#316024;
+  --petal-light:#ffe066;
+  --petal-mid:#ffcd3c;
+  --petal-dark:#e8a90a;
+  --petal-shadow:#b87d05;
+  --center-outer:#a85d10;
+  --center-inner:#5c3208;
+}
+
+*{ box-sizing:border-box; }
+
+html,body{
+  margin:0;
+  padding:0;
+  height:100%;
+  font-family:'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.scene{
+  position:relative;
+  width:100%;
+  height:100vh;
+  min-height:600px;
+  overflow:hidden;
+  background:linear-gradient(to bottom, var(--sky-top) 0%, var(--sky-bottom) 100%);
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+}
+
+.sun{
+  position:absolute;
+  top:8%;
+  right:10%;
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 35%, #fff8dc, #ffd23f 55%, #ffb703 100%);
+  box-shadow:0 0 70px 25px rgba(255,210,63,0.4);
+}
+
+.message{
+  position:absolute;
+  top:12%;
+  left:50%;
+  transform:translateX(-50%);
+  text-align:center;
+  z-index:5;
+  padding:0 20px;
+}
+
+.message h1{
+  margin:0;
+  font-family:'Georgia', 'Times New Roman', serif;
+  font-style:italic;
+  font-size:clamp(1.6rem, 4vw, 2.6rem);
+  color:#7a3b12;
+  text-shadow:0 2px 6px rgba(255,255,255,0.6);
+}
+
+.message p{
+  margin:6px 0 0;
+  font-size:clamp(1.2rem, 3vw, 1.8rem);
+  color:#c0392b;
+  font-weight:bold;
+  text-shadow:0 2px 4px rgba(255,255,255,0.5);
+}
+
+.garden{
+  position:relative;
+  width:100%;
+  max-width:1000px;
+  height:70%;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  gap:1.5vw;
+  z-index:3;
+  padding-bottom:6%;
+}
+
+.ground{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  height:8%;
+  background:linear-gradient(to bottom, #7fbf5a, #4f9636);
+  z-index:2;
+}
+
+/* ---------- FLOR ---------- */
+
+.flower{
+  position:relative;
+  width:15vw;
+  max-width:130px;
+  min-width:80px;
+  height:100%;
+  transform-origin:bottom center;
+  animation:sway 5s ease-in-out infinite;
+}
+
+@keyframes sway{
+  0%,100%{ transform:rotate(-3deg); }
+  50%{ transform:rotate(3deg); }
+}
+
+.stem{
+  position:absolute;
+  bottom:0;
+  left:50%;
+  width:7px;
+  height:60%;
+  background:linear-gradient(to right, var(--stem-dark), var(--stem) 40%, var(--stem-dark));
+  border-radius:5px;
+  transform:translateX(-50%);
+}
+
+.leaf{
+  position:absolute;
+  width:40px;
+  height:18px;
+  background:linear-gradient(135deg, var(--stem), var(--stem-dark));
+  border-radius:0 50% 0 50%;
+}
+
+.leaf.left{
+  bottom:22%;
+  left:calc(50% - 38px);
+  transform:rotate(15deg);
+}
+
+.leaf.right{
+  bottom:34%;
+  left:calc(50% + 2px);
+  transform:rotate(-140deg) scaleX(-1);
+}
+
+.bloom{
+  position:absolute;
+  bottom:58%;
+  left:50%;
+  transform:translate(-50%, 50%);
+  width:100%;
+  aspect-ratio:1/1;
+  filter:drop-shadow(0 6px 10px rgba(0,0,0,0.15));
+}
+
+/* Pétalos con forma más orgánica y textura de vetas para un look más realista */
+.petal{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:36%;
+  height:64%;
+  transform-origin:50% 100%;
+  background:
+    linear-gradient(to top, var(--petal-shadow) 0%, var(--petal-dark) 25%, var(--petal-mid) 55%, var(--petal-light) 100%);
+  clip-path: path("M 20 100 C 0 70, 5 25, 20 5 C 35 25, 40 70, 20 100 Z");
+  box-shadow: inset -3px -3px 6px rgba(120,70,0,0.25);
+}
+
+.petal::after{
+  content:"";
+  position:absolute;
+  top:12%;
+  left:48%;
+  width:2px;
+  height:70%;
+  background:rgba(180,110,0,0.25);
+  transform:translateX(-50%);
+  border-radius:2px;
+}
+
+.petal:nth-child(1){ transform:translate(-50%,-100%) rotate(0deg); }
+.petal:nth-child(2){ transform:translate(-50%,-100%) rotate(30deg); }
+.petal:nth-child(3){ transform:translate(-50%,-100%) rotate(60deg); }
+.petal:nth-child(4){ transform:translate(-50%,-100%) rotate(90deg); }
+.petal:nth-child(5){ transform:translate(-50%,-100%) rotate(120deg); }
+.petal:nth-child(6){ transform:translate(-50%,-100%) rotate(150deg); }
+.petal:nth-child(7){ transform:translate(-50%,-100%) rotate(180deg); }
+.petal:nth-child(8){ transform:translate(-50%,-100%) rotate(210deg); }
+.petal:nth-child(9){ transform:translate(-50%,-100%) rotate(240deg); }
+.petal:nth-child(10){ transform:translate(-50%,-100%) rotate(270deg); }
+.petal:nth-child(11){ transform:translate(-50%,-100%) rotate(300deg); }
+.petal:nth-child(12){ transform:translate(-50%,-100%) rotate(330deg); }
+
+.center{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:32%;
+  height:32%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 30% 25%, var(--center-outer), var(--center-inner) 80%);
+  box-shadow:
+    inset 0 0 8px rgba(0,0,0,0.5),
+    0 0 0 2px rgba(255,255,255,0.08);
+}
+
+/* Textura granulada del centro simulando semillas */
+.center::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background-image:
+    radial-gradient(circle, rgba(0,0,0,0.35) 1px, transparent 1.5px);
+  background-size:6px 6px;
+  opacity:0.5;
+}
+
+/* ---------- Pétalos cayendo ---------- */
+.petal-fall{
+  position:absolute;
+  top:-20px;
+  width:10px;
+  height:14px;
+  background:linear-gradient(to top, var(--petal-dark), var(--petal-light));
+  border-radius:0 50% 0 50%;
+  opacity:0.9;
+  pointer-events:none;
+  animation-name:fall;
+  animation-timing-function:linear;
+  animation-iteration-count:infinite;
+  z-index:4;
+}
+
+@keyframes fall{
+  0%{ transform:translateY(0) rotate(0deg); opacity:0.9; }
+  100%{ transform:translateY(110vh) rotate(360deg); opacity:0; }
+}
